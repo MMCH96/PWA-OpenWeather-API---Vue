@@ -29,9 +29,15 @@
 <script>
 import {mapState} from 'vuex';
 
+
 export default {
   computed:{
     ...mapState(['clima'])
-  }
+  },
+  methods: {
+      recibeDatos(datos){
+          
+      }
+  },
 }
 </script>

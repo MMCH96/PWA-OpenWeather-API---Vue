@@ -22,9 +22,12 @@
 <script>
 import {mapState} from 'vuex';
 import axios from "axios";
+import {cl} from 'vue'
+
 
 export default {
   name: 'HelloWorld',
+ 
    data() {
     return{
       ApiKey:"e56eb9847bab74b033a734c62492fc38",
@@ -42,6 +45,7 @@ export default {
   },
   created(){
     this.obtenerClima();
+    
   },
   methods:{
     obtenerClima(){
@@ -49,6 +53,7 @@ export default {
       .get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.long}&appid=${this.ApiKey}`)
       .then((res)=> {
         console.log(res.data);
+
       })
       
     }
