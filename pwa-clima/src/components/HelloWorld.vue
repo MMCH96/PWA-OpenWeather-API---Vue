@@ -5,33 +5,56 @@
         
       <div class="input-group flex-nowrap container">
         <span class="input-group-text" id="addon-wrapping">Longitud</span>
-        <input type="text" class="form-control" placeholder="Longitud" aria-label="Username" aria-describedby="addon-wrapping">
+        <input type="text" class="form-control" placeholder="Longitud" aria-label="Username" aria-describedby="addon-wrapping" v-model="long">
       </div>
         <br>
       <div class="input-group flex-nowrap container">
         <span class="input-group-text" id="addon-wrapping">Latitud</span>
-        <input type="text" class="form-control" placeholder="Latitud" aria-label="Username" aria-describedby="addon-wrapping">
+        <input type="text" class="form-control" placeholder="Latitud" aria-label="Username" aria-describedby="addon-wrapping" v-model="lat">
       </div>
         <br>
       <div class="container">
-          <button class="btn btn-outline-dark" @click="clima">Enviar</button>
+          <button class="btn btn-outline-dark" @click="obtenerClima">Enviar</button>
       </div>
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex';
+import axios from "axios";
 
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
+   data() {
+    return{
+      ApiKey:"e56eb9847bab74b033a734c62492fc38",
+      long:'',
+      lat:''
+    }
+
   },
-  methods: {
-    clima (){
+  props: {
+    msg: String,
+   
+  },
+  computed:{
+    ...mapState(['clima'])
+  },
+  created(){
+    this.obtenerClima();
+  },
+  methods:{
+    obtenerClima(){
+      axios
+      .get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.long}&appid=${this.ApiKey}`)
+      .then((res)=> {
+        console.log(res.data);
+      })
       
     }
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
