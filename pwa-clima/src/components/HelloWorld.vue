@@ -23,6 +23,7 @@
 import {mapState} from 'vuex';
 import axios from "axios";
 import {cl} from 'vue'
+import DatosRecibidos from '@/components/Clima.vue'
 
 
 export default {
@@ -34,14 +35,15 @@ export default {
       long:'',
       lat:''
     }
-
+    
   },
   props: {
     msg: String,
    
   },
   computed:{
-    ...mapState(['clima'])
+ 
+
   },
   created(){
     this.obtenerClima();
@@ -53,6 +55,20 @@ export default {
       .get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.long}&appid=${this.ApiKey}`)
       .then((res)=> {
         console.log(res.data);
+
+      /// in a component method
+this.$store.commit('setTemp', {
+  name: res.data.name,
+  temp: res.data.main.temp
+  //
+  //
+})
+    
+    //  new clima2=[]
+       // this.clima2 = res.data;
+       // console.log(clima2)
+   
+       // DatosRecibidos.recibeDatos(res.data);
 
       })
       

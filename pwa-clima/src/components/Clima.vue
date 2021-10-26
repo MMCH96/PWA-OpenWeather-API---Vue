@@ -5,7 +5,7 @@
   
     <div class="form-floating mb-3 container" v-for="item of clima" :key="item.id">
         <input type="text" class="form-control " id="floatingInput" placeholder=" "  disabled>
-        <label for="floatingInput" class="text-center"> Ciudad : {{item.ciudad}}</label>
+        <label for="floatingInput" class="text-center"> Ciudad : {{item.name}}</label>
     </div>
         <br>
 
@@ -28,15 +28,21 @@
 </template>
 <script>
 import {mapState} from 'vuex';
+import HolaMundo from '@/components/HelloWorld.vue'
 
 
 export default {
+    name: 'Clima', //NOMBRE DE CLIMA-- STORE-- AJAX
   computed:{
     ...mapState(['clima'])
   },
+  data:{
+      datos0:[]
+  },
   methods: {
-      recibeDatos(datos){
-          
+      recibeDatos: function(datos){
+          this.datos0=datos
+          console.log("DatosClima: " + datos0);
       }
   },
 }
