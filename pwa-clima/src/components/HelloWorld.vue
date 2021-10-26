@@ -14,8 +14,9 @@
       </div>
         <br>
       <div class="container">
-          <button class="btn btn-outline-dark" @click="obtenerClima">Enviar1</button>
-      </div>
+          <button class="btn btn-outline-dark" @click="obtenerClima">Enviar</button>
+        </div>
+
   </div>
 </template>
 
@@ -59,7 +60,14 @@ export default {
       /// in a component method
 this.$store.commit('setTemp', {
   name: res.data.name,
-  temp: res.data.main.temp
+  temp: res.data.main.temp,
+  feels_like: res.data.main.feels_like,
+  humidity: res.data.main.humidity,
+  weather: res.data.weather[0].main
+
+
+
+
   //
   //
 })
