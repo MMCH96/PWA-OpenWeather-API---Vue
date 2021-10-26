@@ -14,7 +14,7 @@
       </div>
         <br>
       <div class="container">
-          <button class="btn btn-outline-dark" @click="obtenerClima">Enviar</button>
+          <button class="btn btn-outline-dark" @click="obtenerClima">Enviar1</button>
       </div>
   </div>
 </template>
