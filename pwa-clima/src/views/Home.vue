@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img alt="Vue logo" src="../assets/clima2.png">
+    <link rel="manifest" href="./manifest.json">
     <HelloWorld msg="Clima con OpenWeather"/>
     <br>
     <Clima/>
