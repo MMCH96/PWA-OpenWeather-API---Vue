@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     clima:[
-      {name:' ',temp:' ',feels_like:' ',weather:' ', humidity:' ', condicion:1}
+      {name:' ',temp:'',feels_like:' ',weather:' ', humidity:' ', condicion:1}
     ]
   },
   mutations: {
@@ -14,8 +14,8 @@ export default new Vuex.Store({
       const {temp, name, feels_like, weather,humidity}= payload
       const climate= state.clima.find(p => p.condicion === 1)
       climate.name=name
-      climate.temp=temp
-      climate.feels_like=feels_like
+      climate.temp=(temp-273.15).toFixed(2)
+      climate.feels_like=(feels_like-273.15).toFixed(2)
       climate.weather=weather
       climate.humidity=humidity
       
