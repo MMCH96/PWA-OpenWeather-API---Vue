@@ -1,6 +1,6 @@
 {
-    "name":"Clima Terrabionic",
-    "short_name":"Clima Terrabionic",
+    "name":"ClimaTerrabionic",
+    "short_name":"ClimaTerrabionic",
     "theme_color":"#4DBA87",
     "icons":[
         {"src":"./img/icons/clima-192x192.png","sizes":"192x192","type":"image/png"},

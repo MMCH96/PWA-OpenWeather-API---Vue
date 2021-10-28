@@ -2,20 +2,26 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        
-      <div class="input-group flex-nowrap container">
+      
+      <form >
+        <div class="input-group flex-nowrap container">
         <span class="input-group-text" id="addon-wrapping">Longitud</span>
-        <input type="text" class="form-control" placeholder="Longitud" aria-label="Username" aria-describedby="addon-wrapping" v-model="long">
+        <input  type="text" class="form-control" placeholder="Longitud" aria-label="Username" aria-describedby="addon-wrapping" v-model="long" required>
       </div>
         <br>
       <div class="input-group flex-nowrap container">
         <span class="input-group-text" id="addon-wrapping">Latitud</span>
-        <input type="text" class="form-control" placeholder="Latitud" aria-label="Username" aria-describedby="addon-wrapping" v-model="lat">
+        <input  type="text" class="form-control" placeholder="Latitud" aria-label="Username" aria-describedby="addon-wrapping" v-model="lat" required>
       </div>
         <br>
       <div class="container">
-          <button class="btn btn-outline-dark" @click="obtenerClima">Enviar</button>
+          <button class="btn btn-outline-dark" @click="obtenerClima" @keyup.enter="obtenerClima">Enviar</button>
         </div>
+
+
+
+      </form>
+     
 
   </div>
 </template>
@@ -25,6 +31,7 @@ import {mapState} from 'vuex';
 import axios from "axios";
 import {cl} from 'vue'
 import DatosRecibidos from '@/components/Clima.vue'
+
 
 
 export default {
@@ -52,33 +59,32 @@ export default {
   },
   methods:{
     obtenerClima(){
-      axios
-      .get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.long}&appid=${this.ApiKey}`)
-      .then((res)=> {
-        console.log(res.data);
-
-      /// in a component method
-this.$store.commit('setTemp', {
-  name: res.data.name,
-  temp: res.data.main.temp,
-  feels_like: res.data.main.feels_like,
-  humidity: res.data.main.humidity,
-  weather: res.data.weather[0].main
 
 
+          if(this.long > -180 && this.long < 180 && this.lat > -90 && this.lat < 90)
+          {
+              axios
+                .get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.long}&appid=${this.ApiKey}`)
+                .then((res)=> {
+                console.log(res.data);
+                console.log(res.status)
+            
+              this.$store.commit('setTemp', {
+                name: res.data.name,
+                temp: res.data.main.temp,
+                feels_like: res.data.main.feels_like,
+                humidity: res.data.main.humidity,
+                weather: res.data.weather[0].main
+                })
 
-
-  //
-  //
-})
-    
-    //  new clima2=[]
-       // this.clima2 = res.data;
-       // console.log(clima2)
-   
-       // DatosRecibidos.recibeDatos(res.data);
-
-      })
+              })
+          }
+          else
+          {
+            
+            this.$alert("Coordenadas Incorrectas");
+            console.log("No encontro las coordenadas")
+          }
       
     }
   }
