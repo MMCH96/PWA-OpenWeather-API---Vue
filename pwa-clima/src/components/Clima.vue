@@ -34,7 +34,7 @@
         <br>
         <div class="form-floating mb-3 container" v-for="item of clima" :key="item.id">
         <input type="text" class="form-control " id="floatingInput" placeholder=" "  disabled>
-        <label for="floatingInput" class="text-center"> Humedad : {{item.humidity}}</label>
+        <label for="floatingInput" class="text-center"> Humedad : {{item.humidity}} %</label>
     </div>
     <br>
     </div>

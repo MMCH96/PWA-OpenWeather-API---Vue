@@ -27,10 +27,8 @@
 </template>
 
 <script>
-import {mapState} from 'vuex';
+
 import axios from "axios";
-import {cl} from 'vue'
-import DatosRecibidos from '@/components/Clima.vue'
 
 
 
@@ -67,7 +65,7 @@ export default {
                 .get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.long}&appid=${this.ApiKey}`)
                 .then((res)=> {
                 console.log(res.data);
-                console.log(res.status)
+                //console.log(res.status)
             
               this.$store.commit('setTemp', {
                 name: res.data.name,
