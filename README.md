@@ -1,4 +1,4 @@
-# pwa-clima
+# clima
 
 ## Project setup
 ```

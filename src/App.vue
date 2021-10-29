@@ -1,6 +1,5 @@
 <template>
-
-  <div id="app">
+ <div id="app">
     <div id="nav">
       
     </div>
@@ -16,11 +15,10 @@
   text-align: center;
   color: #2c3e50;
   background-color: rgb(127, 224, 253);
-  
 }
 
 #nav {
-  padding: 10px;
+  padding: 30px;
 }
 
 #nav a {
