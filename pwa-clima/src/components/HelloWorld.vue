@@ -4,14 +4,16 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
       
       <form >
+
         <div class="input-group flex-nowrap container">
-        <span class="input-group-text" id="addon-wrapping">Longitud</span>
-        <input  type="text" class="form-control" placeholder="Longitud" aria-label="Username" aria-describedby="addon-wrapping" v-model="long" required>
+        <span class="input-group-text" id="addon-wrapping">Latitud</span>
+        <input  type="text" class="form-control" placeholder="20.11697" aria-label="Username" aria-describedby="addon-wrapping" v-model="lat" required>
       </div>
+        
         <br>
       <div class="input-group flex-nowrap container">
-        <span class="input-group-text" id="addon-wrapping">Latitud</span>
-        <input  type="text" class="form-control" placeholder="Latitud" aria-label="Username" aria-describedby="addon-wrapping" v-model="lat" required>
+        <span class="input-group-text" id="addon-wrapping">Longitud</span>
+        <input  type="text" class="form-control" placeholder="-98.73329" aria-label="Username" aria-describedby="addon-wrapping" v-model="long" required>
       </div>
         <br>
       <div class="container">
@@ -79,9 +81,16 @@ export default {
           }
           else
           {
-            
-            this.$alert("Coordenadas Incorrectas");
+            if(this.long < -180 || this.long > 180)
+            {
+              this.$alert("Coordenadas Incorrectas, la longitud debe estar dentro de el rango de -180 a 180");
             console.log("No encontro las coordenadas")
+            }
+            else if(this.lat < -90 || this.lat > 90)
+            {
+              this.$alert("Coordenadas Incorrectas, la latitud debe estar dentro de el rango de -90 a 90");
+            console.log("No encontro las coordenadas")
+            }
           }
       
     }
