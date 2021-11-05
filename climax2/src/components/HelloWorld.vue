@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h5>Ingresa coordenadas y los datos se actualizarán automáticamente</h5>
+    <h5>Ingresa las coordenadas y los datos se actualizarán automáticamente</h5>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     
       <form >
@@ -19,7 +19,7 @@
         <br>
       <div class="container">
           
-          <br>
+      
           <a class="boton_personalizado" :href="obtenerClima()"></a>
           
         </div>

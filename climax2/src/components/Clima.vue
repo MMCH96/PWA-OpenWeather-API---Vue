@@ -3,8 +3,8 @@
     <div v-for="item of clima" :key="item.id">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         
-        <button id="1" class="btn btn-primary" type="button" @click="cambioEstado()" v-if="item.weather != ' '" >F°</button>
-        <button class="btn btn-success" type="button" @click="cambioEstado2()" v-if="item.weather != ' '" >C°</button>
+        <button id="1" :class="clase2" type="button" @click="cambioEstado()" v-if="item.weather != ' '" >F°</button>
+        <button :class="clase1" type="button" @click="cambioEstado2()" v-if="item.weather != ' '" >C°</button>
     </div>
 
     <div class="form-floating mb-3 container" v-for="item of clima" :key="item.id">
@@ -51,7 +51,9 @@ export default {
     data(){
         return{
             estado:true,
-            estado2:false
+            estado2:false,
+            clase1:"btn btn-success",
+            clase2:"btn btn-outline-dark"
             
         }
     },
@@ -64,6 +66,8 @@ export default {
      {
         this.estado = false
         this.estado2 = true
+        this.clase1 = "btn btn-outline-success",
+        this.clase2 = "btn btn-dark"
         
          
          
@@ -73,6 +77,8 @@ export default {
   
             this.estado = true
             this.estado2 = false
+            this.clase1 = "btn btn-success",
+            this.clase2 = "btn btn-outline-dark"
          
      }
   },
